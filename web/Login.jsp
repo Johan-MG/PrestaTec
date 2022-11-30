@@ -82,7 +82,7 @@
     <!-- Navbar Start -->
     <div class="container-fluid p-0">
         <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5">
-            <a href="index.html" class="navbar-brand ml-lg-3">
+            <a href="Principal.jsp" class="navbar-brand ml-lg-3">
                 <h1 class="m-0 text-uppercase text-primary"><i class="fa fa-book-reader mr-3"></i>PrestaTec</h1>
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -90,15 +90,12 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
                 <div class="navbar-nav mx-auto py-0">
-                    <a href="index.html" class="nav-item nav-link">Inicio</a>
+                    <a href="Principal.jsp" class="nav-item nav-link">Inicio</a>
                     <a href="about.html" class="nav-item nav-link active">Acerca de</a>
                     <a href="contact.html" class="nav-item nav-link">Contacto</a>
                 </div>
-                <a href="item.html" class="btn btn-light py-2 px-4 d-none d-lg-block">Registro item</a>
-                <small class="px-2"></small>
                 <a href="Registro.jsp" class="btn btn-primary py-2 px-4 d-none d-lg-block">Registro</a>
                 <small class="px-2"></small>
-                <a href="Login.jsp" class="btn btn-primary py-2 px-4 d-none d-lg-block">Inicio de sesión</a>
             </div>
         </nav>
     </div>
@@ -150,7 +147,7 @@
                         </div>
                         <div id="passwordHelpBlock" class="form-text">
                             ¿Aún no tienes cuenta? 
-                            <a href="signin.html">Crear una cuenta ahora</a>
+                            <a href="Registro.jsp">Crear una cuenta ahora</a>
                           </div>
                         <%=mensaje%>
                         </form>
@@ -168,7 +165,7 @@
                 
                 <div class="row">
                     <div class="col-md-4 mb-5">
-                        <a href="index.html" class="navbar-brand">
+                        <a href="Principal.jsp" class="navbar-brand">
                             <h1 class="mt-n2 text-uppercase text-white"><i class="fa fa-book-reader mr-3"></i>PrestaTec</h1>
                         </a>
                         <p class="m-0">Una plataforma de estudiantes del Tec para estudiantes del Tec dedicada a la gestión del préstamo de materiales entre la comunidad estudiantil.</p>

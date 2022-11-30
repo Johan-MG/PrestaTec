@@ -42,8 +42,16 @@ public class srvPrestamos extends HttpServlet {
             try{
                 ResultSet listaItems = obj.ListaItems(usuario);
                 ResultSet listaPrestamos = obj.ListaPrestamos(usuario);
-                request.getSession().setAttribute("rsListaItems", listaItems);
-                request.getSession().setAttribute("rsListaPrestamos", listaPrestamos);
+                listaItems.next();
+                String bandera1 = listaItems.getString(1);
+                if(!bandera1.equals("1")){
+                    request.getSession().setAttribute("rsListaItems", listaItems);;
+                }
+                listaPrestamos.next();
+                String bandera2 = listaPrestamos.getString(1);
+                if(!bandera2.equals("1")){
+                    request.getSession().setAttribute("rsListaPrestamos", listaPrestamos);
+                }
                 request.getRequestDispatcher("Panel.jsp").forward(request, response);
             }catch(SQLException ex){
                 request.getSession().setAttribute("errorCode", "1");

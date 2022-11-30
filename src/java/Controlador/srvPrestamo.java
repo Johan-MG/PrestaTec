@@ -53,7 +53,7 @@ public class srvPrestamo extends HttpServlet {
                 rs.next();
                 switch(rs.getString(1)){
                     case "0":
-                        request.getRequestDispatcher("Panel.jsp").forward(request, response);
+                        request.getRequestDispatcher("srvPrestamos").forward(request, response);
                         break;
                     case "1":
                         request.getSession().setAttribute("errorCode", "1");

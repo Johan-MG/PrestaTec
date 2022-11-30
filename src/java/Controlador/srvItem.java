@@ -57,7 +57,7 @@ public class srvItem extends HttpServlet {
                !Ncontrol.equals("")){
                ResultSet rs = obj.RegistrarItem(descripcion, tipo, estado, categoria, Ncontrol);
                request.getSession().setAttribute("rsInsItem", rs);
-               request.getRequestDispatcher("Panel.jsp").forward(request, response);
+               request.getRequestDispatcher("srvPrestamos").forward(request, response);
                
             }else{
                 request.getSession().setAttribute("errorCode", "1");
@@ -65,7 +65,7 @@ public class srvItem extends HttpServlet {
             }
             
         }catch(SQLException ex){
-                System.out.print("Error:2");
+                System.out.print(ex);
                 request.getSession().setAttribute("errorCode", "2");
                 request.getRequestDispatcher("Item.jsp").forward(request, response);
         }

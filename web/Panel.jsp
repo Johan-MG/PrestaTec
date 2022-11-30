@@ -13,6 +13,7 @@
     String tablaPrestamos = "";
     String Usuario = "";
     String NoControl = "";
+    String BotonUsuario = "";
     if(request.getSession().getAttribute("rsListaItems") != null){
         vistaItems = (ResultSet)request.getSession().getAttribute("rsListaItems");
         tablaItems = "<table class='table table-borded table-responsive table-striped'>";
@@ -23,7 +24,7 @@
         tablaItems += "<th>Estado</th>";
         tablaItems += "<th>Categoria</th>";
         tablaItems += "</tr></thead>";
-        while(vistaItems.next()){
+        do{
             tablaItems += "<tbody><tr>";
             tablaItems += "<td>"+vistaItems.getString(1)+"</td>";
             tablaItems += "<td>"+vistaItems.getString(2)+"</td>";
@@ -32,7 +33,7 @@
             tablaItems += "<td>"+vistaItems.getString(5)+"</td>";
             //tablaDatos += "<td><button name='btnFiltro' onclick='enviar("+vistaItems.getString(1)+", "+vistaItems.getString(6)+")' class='btn btn-light py-1 px-2 d-none d-lg-block'>Reservar</button></td>";
             tablaItems += "</tr></tbody>";
-        }
+        }while(vistaItems.next());
         tablaItems += "</table>";
         request.getSession().setAttribute("rsListaItems", null);
     }
@@ -50,7 +51,7 @@
         tablaPrestamos += "<th>Estado</th>";
         tablaPrestamos += "<th>Entregar</th>";
         tablaPrestamos += "</tr></thead>";
-        while(vistaPrestamos.next()){
+        do{
             tablaPrestamos += "<tbody><tr>";
             tablaPrestamos += "<td>"+vistaPrestamos.getString(1)+"</td>";
             tablaPrestamos += "<td>"+vistaPrestamos.getString(2)+"</td>";
@@ -70,13 +71,20 @@
             tablaPrestamos += "<td> </td>";
             }
             tablaPrestamos += "</tr></tbody>";
-        }
+        }while(vistaPrestamos.next());
         tablaPrestamos += "</table>";
         request.getSession().setAttribute("rsListaPrestamos", null);
     }
     if(request.getSession().getAttribute("usuUsuario") != null){
         Usuario += request.getSession().getAttribute("usuUsuario");
         NoControl += request.getSession().getAttribute("usuNcontrol");
+        BotonUsuario += "<a href='Item.jsp' class='btn btn-light py-2 px-4 d-none d-lg-block'>Registro item</a> <small class='px-2'></small>";
+        BotonUsuario += "<div class='nav-item dropdown'>";
+        BotonUsuario += "<a href='#' class='nav-link dropdown-toggle' data-toggle='dropdown'>"+request.getSession().getAttribute("usuUsuario")+"</a>";
+        BotonUsuario += "<div class='dropdown-menu m-0'>";
+        BotonUsuario += "<a href='srvPrestamos' class='dropdown-item'>Panel</a>";
+        BotonUsuario += "<a href='srvCerrarSesion' class='dropdown-item'>Cerrar sesión</a>";
+        BotonUsuario += "</div> </div>";
     }else{
         request.getRequestDispatcher("Login.jsp").forward(request, response);
     }
@@ -145,7 +153,7 @@
     <!-- Navbar Start -->
     <div class="container-fluid p-0">
         <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5">
-            <a href="index.html" class="navbar-brand ml-lg-3">
+            <a href="Principal.jsp" class="navbar-brand ml-lg-3">
                 <h1 class="m-0 text-uppercase text-primary"><i class="fa fa-book-reader mr-3"></i>PrestaTec</h1>
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -153,16 +161,11 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
                 <div class="navbar-nav mx-auto py-0">
-                    <a href="index.html" class="nav-item nav-link">Inicio</a>
+                    <a href="Principal.jsp" class="nav-item nav-link">Inicio</a>
                     <a href="about.html" class="nav-item nav-link active">Acerca de</a>
                     <a href="contact.html" class="nav-item nav-link">Contacto</a>
-                    <a href="panel.html" class="nav-item nav-link">Panel</a>
                 </div>
-                <a href="item.html" class="btn btn-light py-2 px-4 d-none d-lg-block">Registro item</a>
-                <small class="px-2"></small>
-                <a href="signin.html" class="btn btn-primary py-2 px-4 d-none d-lg-block">Registro</a>
-                <small class="px-2"></small>
-                <a href="login.html" class="btn btn-primary py-2 px-4 d-none d-lg-block">Inicio de sesión</a>
+                <%=BotonUsuario%>
             </div>
         </nav>
     </div>
@@ -206,7 +209,7 @@
                 
                 <div class="row">
                     <div class="col-md-4 mb-5">
-                        <a href="index.html" class="navbar-brand">
+                        <a href="Principal.jsp" class="navbar-brand">
                             <h1 class="mt-n2 text-uppercase text-white"><i class="fa fa-book-reader mr-3"></i>PrestaTec</h1>
                         </a>
                         <p class="m-0">Una plataforma de estudiantes del Tec para estudiantes del Tec dedicada a la gestión del préstamo de materiales entre la comunidad estudiantil.</p>

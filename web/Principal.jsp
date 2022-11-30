@@ -42,13 +42,13 @@
         mensaje += "</script>";
     }*/
     if(request.getSession().getAttribute("usuUsuario") != null){
+        BotonUsuario += "<a href='Item.jsp' class='btn btn-light py-2 px-4 d-none d-lg-block'>Registro item</a> <small class='px-2'></small>";
         BotonUsuario += "<div class='nav-item dropdown'>";
         BotonUsuario += "<a href='#' class='nav-link dropdown-toggle' data-toggle='dropdown'>"+request.getSession().getAttribute("usuUsuario")+"</a>";
         BotonUsuario += "<div class='dropdown-menu m-0'>";
+        BotonUsuario += "<a href='srvPrestamos' class='dropdown-item'>Panel</a>";
         BotonUsuario += "<a href='srvCerrarSesion' class='dropdown-item'>Cerrar sesión</a>";
-        BotonUsuario += "<a href='panel.html' class='dropdown-item'>Panel</a>";
         BotonUsuario += "</div> </div>";
-        BotonUsuario += "<a href='Item.jsp' class='btn btn-light py-2 px-4 d-none d-lg-block'>Registro item</a> <small class='px-2'></small>";
                
     }else{
         BotonUsuario += "<a href='Registro.jsp' class='btn btn-primary py-2 px-4 d-none d-lg-block'>Crear cuenta</a> <small class='px-2'></small>";
@@ -133,7 +133,6 @@
                     <a href="Principal.jsp" class="nav-item nav-link active">Inicio</a>
                     <a href="about.html" class="nav-item nav-link">Acerca de</a>
                     <a href="contact.html" class="nav-item nav-link">Contacto</a>
-                    <a href="panel.html" class="nav-item nav-link">Panel</a>
                 </div>
                 <%=BotonUsuario%>
             </div>
